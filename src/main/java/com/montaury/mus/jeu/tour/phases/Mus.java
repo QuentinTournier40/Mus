@@ -4,7 +4,7 @@ import com.montaury.mus.jeu.Opposants;
 import com.montaury.mus.jeu.carte.Defausse;
 import com.montaury.mus.jeu.carte.Paquet;
 import com.montaury.mus.jeu.evenements.Evenements;
-import com.montaury.mus.jeu.joueur.Joueur;
+import com.montaury.mus.console.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.TypeChoix;
 import java.util.List;
 

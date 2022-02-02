@@ -1,5 +1,7 @@
 package com.montaury.mus.jeu.joueur;
 
+import com.montaury.mus.console.joueur.Joueur;
+import com.montaury.mus.console.joueur.Main;
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import java.util.Arrays;

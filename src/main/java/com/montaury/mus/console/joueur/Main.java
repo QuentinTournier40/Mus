@@ -1,4 +1,4 @@
-package com.montaury.mus.jeu.joueur;
+package com.montaury.mus.console.joueur;
 
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.carte.ValeurCarte;

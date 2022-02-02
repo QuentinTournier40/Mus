@@ -1,6 +1,6 @@
 package com.montaury.mus.jeu.tour.phases;
 
-import com.montaury.mus.jeu.joueur.Joueur;
+import com.montaury.mus.console.joueur.Joueur;
 import java.util.ArrayList;
 import java.util.List;
 

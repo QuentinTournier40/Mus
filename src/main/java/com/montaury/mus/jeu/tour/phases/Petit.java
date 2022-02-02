@@ -1,6 +1,6 @@
 package com.montaury.mus.jeu.tour.phases;
 
-import com.montaury.mus.jeu.joueur.Main;
+import com.montaury.mus.console.joueur.Main;
 
 import static com.montaury.mus.jeu.carte.ValeurCarte.Comparaison.PLUS_GRANDE;
 import static com.montaury.mus.jeu.carte.ValeurCarte.Comparaison.PLUS_PETITE;

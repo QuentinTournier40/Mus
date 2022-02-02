@@ -2,7 +2,7 @@ package com.montaury.mus.jeu.tour.phases.dialogue;
 
 import com.montaury.mus.jeu.Manche;
 import com.montaury.mus.jeu.evenements.Evenements;
-import com.montaury.mus.jeu.joueur.Joueur;
+import com.montaury.mus.console.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.Participants;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.TypeChoix;

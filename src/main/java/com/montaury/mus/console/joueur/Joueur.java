@@ -1,4 +1,4 @@
-package com.montaury.mus.jeu.joueur;
+package com.montaury.mus.console.joueur;
 
 import com.montaury.mus.console.InterfaceJoueurHumain;
 import com.montaury.mus.jeu.carte.Carte;

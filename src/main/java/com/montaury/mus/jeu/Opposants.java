@@ -1,33 +1,34 @@
 package com.montaury.mus.jeu;
 
-import com.montaury.mus.jeu.joueur.Joueur;
-import java.util.Iterator;
+import com.montaury.mus.console.joueur.Joueur;
+import com.montaury.mus.jeu.Equipe;
+
 import java.util.List;
 
 public class Opposants {
-  private Joueur joueurEsku;
-  private Joueur joueurZaku;
+  private Equipe equipeEsku;
+  private Equipe equipeZaku;
 
-  public Opposants(Joueur joueurEsku, Joueur joueurZaku) {
-    this.joueurEsku = joueurEsku;
-    this.joueurZaku = joueurZaku;
+  public Opposants(Equipe equipeEsku, Equipe equipeZaku) {
+    this.equipeEsku = equipeEsku;
+    this.equipeZaku = equipeZaku;
   }
 
   public void tourner() {
-    var tmp = joueurEsku;
-    joueurEsku = joueurZaku;
-    joueurZaku = tmp;
+    var tmp = equipeEsku;
+    equipeEsku = equipeZaku;
+    equipeZaku = tmp;
   }
 
-  public Joueur joueurEsku() {
-    return joueurEsku;
+  public Equipe equipeEsku() {
+    return this.equipeEsku;
   }
 
-  public Joueur joueurZaku() {
-    return joueurZaku;
+  public Equipe equipeZaku() {
+    return this.equipeZaku;
   }
 
-  public List<Joueur> dansLOrdre() {
-    return List.of(joueurEsku, joueurZaku);
+  public List<Equipe> dansLOrdre() {
+    return List.of(equipeEsku, equipeZaku);
   }
 }
