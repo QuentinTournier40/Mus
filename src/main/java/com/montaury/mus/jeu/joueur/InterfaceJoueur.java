@@ -1,4 +1,4 @@
-package com.montaury.mus.console.joueur;
+package com.montaury.mus.jeu.joueur;
 
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;

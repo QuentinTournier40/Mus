@@ -1,8 +1,5 @@
 package com.montaury.mus.jeu;
 
-import com.montaury.mus.console.joueur.Joueur;
-import com.montaury.mus.jeu.Equipe;
-
 import java.util.List;
 
 public class Opposants {

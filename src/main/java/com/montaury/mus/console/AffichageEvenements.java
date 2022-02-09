@@ -4,7 +4,7 @@ import com.montaury.mus.jeu.Manche;
 import com.montaury.mus.jeu.Opposants;
 import com.montaury.mus.jeu.Partie;
 import com.montaury.mus.jeu.evenements.Evenements;
-import com.montaury.mus.console.joueur.Joueur;
+import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.Phase;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import java.util.stream.Collectors;
@@ -34,15 +34,15 @@ public class AffichageEvenements implements Evenements {
 
   @Override
   public void nouveauTour(Opposants opposants) {
-    afficher(opposants.equipeEsku().dansLOrdre().get(0).nom() + " est esku");
+    afficher(opposants.equipeEsku().getListeDesJoueurs().get(0).nom() + " est esku");
   }
 
   @Override
   public void tourTermine(Opposants opposants, Manche.Score score) {
     afficher("Tour terminé");
-    opposants.equipeEsku().dansLOrdre().forEach(this::afficherMain);
-    opposants.equipeZaku().dansLOrdre().forEach(this::afficherMain);
-    score.scoreParJoueur().forEach((key, value) -> afficher("Score " + key.nom() + ": " + value));
+    opposants.equipeEsku().getListeDesJoueurs().forEach(this::afficherMain);
+    opposants.equipeZaku().getListeDesJoueurs().forEach(this::afficherMain);
+    score.scoreParEquipe().forEach((key, value) -> afficher("Score " + "Erreur a revoir"+ ": " + value));
     sautLigne();
   }
 
@@ -86,20 +86,4 @@ public class AffichageEvenements implements Evenements {
   private void sautLigne() {
     System.out.println();
   }
-/*
-  @Override
-  public void nouveauTour(Opposants2v2 opposants){
-    afficher(opposants.equipeEsku().getJoueur1() + " et " + opposants.equipeEsku().getJoueur2() + " est esku");
-  }
-
-  @Override
-  void tourTermine(Opposants2v2 opposants){
-    afficher("Tour terminé");
-    opposants.equipeEsku().dansLOrdre().forEach(this::afficherMain);
-    opposants.equipeZaku().dansLOrdre().forEach(this::afficherMain);
-    //score.scoreParJoueur().forEach((key, value) -> afficher("Score " + key.nom() + ": " + value));
-    sautLigne();
-  }
-
- */
 }

@@ -1,10 +1,11 @@
 package com.montaury.mus.jeu.tour.phases;
 
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.carte.Defausse;
 import com.montaury.mus.console.AffichageEvenements;
-import com.montaury.mus.console.joueur.InterfaceJoueur;
-import com.montaury.mus.console.joueur.Joueur;
+import com.montaury.mus.jeu.joueur.InterfaceJoueur;
+import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.Opposants;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Mintza;
 import java.util.List;
@@ -29,7 +30,11 @@ class MusTest {
     interfaceJoueurZaku = mock(InterfaceJoueur.class);
     joueurEsku = new Joueur("J1", interfaceJoueurEsku);
     joueurZaku = new Joueur("J2", interfaceJoueurZaku);
-    opposants = new Opposants(joueurEsku, joueurZaku);
+
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
+
+    opposants = new Opposants(equipeEsku, equipeZaku);
   }
 
   @Test

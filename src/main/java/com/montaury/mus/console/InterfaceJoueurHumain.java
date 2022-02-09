@@ -1,8 +1,8 @@
 package com.montaury.mus.console;
 
 import com.montaury.mus.jeu.carte.Carte;
-import com.montaury.mus.console.joueur.InterfaceJoueur;
-import com.montaury.mus.console.joueur.Main;
+import com.montaury.mus.jeu.joueur.InterfaceJoueur;
+import com.montaury.mus.jeu.joueur.Main;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Gehiago;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Hordago;

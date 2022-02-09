@@ -22,10 +22,13 @@ class PartieTest {
 
   @Test
   void devrait_faire_gagner_le_premier_joueur_a_3_manches() {
-    var opposants = new Opposants(
-      unJoueurFaisantChoix(new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago()),
-      unJoueurFaisantChoix(new Kanta(), new Mus(), new Paso(), new Kanta(), new Kanta(), new Mus(), new Paso(), new Kanta(), new Kanta())
-    );
+    var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago());
+    var joueurZaku = unJoueurFaisantChoix(new Kanta(), new Mus(), new Paso(), new Kanta(), new Kanta(), new Mus(), new Paso(), new Kanta(), new Kanta());
+
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
+
+    var opposants = new Opposants(equipeEsku, equipeZaku);
 
     Partie.Resultat resultat = partie.jouer(opposants);
 

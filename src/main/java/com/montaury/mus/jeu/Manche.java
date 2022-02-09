@@ -1,7 +1,6 @@
 package com.montaury.mus.jeu;
 
 import com.montaury.mus.jeu.evenements.Evenements;
-import com.montaury.mus.console.joueur.Joueur;
 import com.montaury.mus.jeu.tour.Tour;
 import java.util.HashMap;
 import java.util.Map;

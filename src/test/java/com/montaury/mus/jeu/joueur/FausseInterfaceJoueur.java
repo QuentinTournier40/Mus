@@ -1,7 +1,5 @@
 package com.montaury.mus.jeu.joueur;
 
-import com.montaury.mus.console.joueur.InterfaceJoueur;
-import com.montaury.mus.console.joueur.Main;
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.TypeChoix;

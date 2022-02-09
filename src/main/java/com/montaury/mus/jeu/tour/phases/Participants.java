@@ -1,6 +1,6 @@
 package com.montaury.mus.jeu.tour.phases;
 
-import com.montaury.mus.console.joueur.Joueur;
+import com.montaury.mus.jeu.joueur.Joueur;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +17,16 @@ public class Participants {
 
   public boolean estUnique() {
     return dansLOrdre.size() == 1;
+  }
+
+  public boolean equipeEstUnique(){
+    var uneEquipe = dansLOrdre.get(0).getMonEquipe();
+    for(int i = 1; i < dansLOrdre.size(); i++){
+      if(dansLOrdre.get(i).getMonEquipe() != uneEquipe){
+        return false;
+      }
+    }
+    return true;
   }
 
   public Joueur premier() {

@@ -26,7 +26,10 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
+
+    var resultat = manche.jouer(new Opposants(equipeEsku, equipeZaku));
 
     assertThat(resultat.vainqueur()).isNotNull();
     assertThat(resultat.pointsVaincu()).isZero();
@@ -37,9 +40,12 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Gehiago(2));
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(40), new Tira());
 
-    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
 
-    assertThat(resultat.vainqueur()).isEqualTo(joueurEsku);
+    var resultat = manche.jouer(new Opposants(equipeEsku, equipeZaku));
+
+    assertThat(resultat.vainqueur()).isEqualTo(joueurEsku.getMonEquipe());
     assertThat(resultat.pointsVaincu()).isZero();
   }
 
@@ -47,11 +53,15 @@ class MancheTest {
   void devrait_changer_l_ordre_des_opposants_a_la_fin_du_tour() {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
-    var opposants = new Opposants(joueurEsku, joueurZaku);
+
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
+
+    var opposants = new Opposants(equipeEsku, equipeZaku);
 
     manche.jouer(opposants);
 
-    assertThat(opposants.dansLOrdre()).containsExactly(joueurZaku, joueurEsku);
+    assertThat(opposants.dansLOrdre()).containsExactly(joueurZaku.getMonEquipe(), joueurEsku.getMonEquipe());
   }
 
   private Manche manche;

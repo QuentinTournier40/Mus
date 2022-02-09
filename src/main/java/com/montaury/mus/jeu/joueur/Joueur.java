@@ -1,7 +1,8 @@
-package com.montaury.mus.console.joueur;
+package com.montaury.mus.jeu.joueur;
 
 import com.montaury.mus.console.InterfaceJoueurHumain;
 import com.montaury.mus.jeu.carte.Carte;
+import com.montaury.mus.jeu.Equipe;
 import java.util.List;
 
 public class Joueur {
@@ -16,10 +17,20 @@ public class Joueur {
   private final String nom;
   public final InterfaceJoueur interfaceJoueur;
   private final Main main = Main.vide();
+  private Equipe monEquipe;
 
   public Joueur(String nom, InterfaceJoueur interfaceJoueur) {
     this.nom = nom;
     this.interfaceJoueur = interfaceJoueur;
+    this.monEquipe = null;
+  }
+
+  public Equipe getMonEquipe() {
+    return monEquipe;
+  }
+
+  public void setMonEquipe(Equipe monEquipe) {
+    this.monEquipe = monEquipe;
   }
 
   public String nom() {

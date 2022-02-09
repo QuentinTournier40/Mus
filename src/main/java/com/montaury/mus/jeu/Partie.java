@@ -1,7 +1,7 @@
 package com.montaury.mus.jeu;
 
 import com.montaury.mus.jeu.evenements.Evenements;
-import com.montaury.mus.console.joueur.Joueur;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
