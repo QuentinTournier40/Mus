@@ -34,7 +34,7 @@ public class AffichageEvenements implements Evenements {
 
   @Override
   public void nouveauTour(Opposants opposants) {
-    afficher(opposants.equipeEsku().getListeDesJoueurs().get(0).nom() + " est esku");
+    afficher(opposants.getOrdreDePassage().getFirst().nom() + " est esku");
   }
 
   @Override
@@ -42,7 +42,7 @@ public class AffichageEvenements implements Evenements {
     afficher("Tour terminé");
     opposants.equipeEsku().getListeDesJoueurs().forEach(this::afficherMain);
     opposants.equipeZaku().getListeDesJoueurs().forEach(this::afficherMain);
-    score.scoreParEquipe().forEach((key, value) -> afficher("Score " + "Erreur a revoir"+ ": " + value));
+    score.scoreParEquipe().forEach((key, value) -> afficher("Score " + key.getListeDesJoueurs().get(0).nom() + " et " + key.getListeDesJoueurs().get(1).nom() + " " + value));
     sautLigne();
   }
 

@@ -4,7 +4,7 @@ import com.montaury.mus.jeu.joueur.Joueur;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Participants {
+public class  Participants {
   private final List<Joueur> dansLOrdre;
 
   public Participants(List<Joueur> dansLOrdre) {

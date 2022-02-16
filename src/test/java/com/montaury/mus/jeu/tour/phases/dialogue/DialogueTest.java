@@ -3,12 +3,8 @@ package com.montaury.mus.jeu.tour.phases.dialogue;
 import com.montaury.mus.jeu.evenements.Evenements;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.Participants;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Hordago;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Idoki;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Imido;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Kanta;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Paso;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Tira;
+import com.montaury.mus.jeu.tour.phases.dialogue.choix.*;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,6 +26,18 @@ class DialogueTest {
     Joueur joueur2 = unJoueurFaisantChoix(new Paso());
 
     Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2)));
+
+    assertThat(recapitulatif.pointsEngages()).isOne();
+  }
+
+  @Test
+  void test2() {
+    Joueur joueur1 = unJoueurFaisantChoix(new Imido());
+    Joueur joueur2 = unJoueurFaisantChoix(new Tira());
+    Joueur joueur3 = unJoueurFaisantChoix(new Tira());
+    Joueur joueur4 = unJoueurFaisantChoix(new Paso());
+
+    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2, joueur3, joueur4)));
 
     assertThat(recapitulatif.pointsEngages()).isOne();
   }

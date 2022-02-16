@@ -21,7 +21,7 @@ public class Equipe {
     joueur1.setMonEquipe(this);
     joueur2.setMonEquipe(this);
   }
-
+  
   public List<Joueur> getListeDesJoueurs() {
     return this.listeDesJoueurs;
   }

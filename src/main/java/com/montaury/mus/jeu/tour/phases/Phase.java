@@ -9,6 +9,7 @@ import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.tour.phases.dialogue.Dialogue;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,17 +57,11 @@ public abstract class Phase {
 
   public Participants participantsParmi(Opposants opposants) {
     List<Joueur> listeDeJoueur = new ArrayList<>();
-    Equipe equipeEsku = opposants.equipeEsku();
-    Equipe equipeZaku = opposants.equipeZaku();
-    for(int i = 0; i < opposants.equipeEsku().getListeDesJoueurs().size(); i++)
-    {
-      if(peutParticiper(equipeEsku.getListeDesJoueurs().get(i).main())){
-        listeDeJoueur.add(equipeEsku.getListeDesJoueurs().get(i));
+    Deque<Joueur> ordreDePassage = opposants.getOrdreDePassage();
+    for(Joueur joueur : ordreDePassage){
+      if(peutParticiper(joueur.main())){
+        listeDeJoueur.add(joueur);
       }
-      if(peutParticiper(equipeZaku.getListeDesJoueurs().get(i).main())){
-        listeDeJoueur.add(equipeZaku.getListeDesJoueurs().get(i));
-      }
-
     }
     return new Participants(listeDeJoueur);
   }

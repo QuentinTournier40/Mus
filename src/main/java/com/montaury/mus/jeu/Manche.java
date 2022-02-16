@@ -24,7 +24,6 @@ public class Manche {
     return new Resultat(score.vainqueur().get(), score.pointsVaincu().get());
   }
 
-  //A changer le nom de la classe
   public static class Score {
     public static final int POINTS_POUR_TERMINER_MANCHE = 40;
 

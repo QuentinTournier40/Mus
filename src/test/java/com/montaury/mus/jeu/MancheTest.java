@@ -3,6 +3,7 @@ package com.montaury.mus.jeu;
 import com.montaury.mus.jeu.evenements.Evenements;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Gehiago;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Hordago;
+import com.montaury.mus.jeu.tour.phases.dialogue.choix.Paso;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Imido;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Kanta;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Mintza;
@@ -42,6 +43,22 @@ class MancheTest {
 
     var equipeEsku = new Equipe(joueurEsku);
     var equipeZaku = new Equipe(joueurZaku);
+
+    var resultat = manche.jouer(new Opposants(equipeEsku, equipeZaku));
+
+    assertThat(resultat.vainqueur()).isEqualTo(joueurEsku.getMonEquipe());
+    assertThat(resultat.pointsVaincu()).isZero();
+  }
+
+  @Test
+  void test() {
+    var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(2));
+    var joueurEsku2 = unJoueurFaisantChoix(new Gehiago(2));
+    var joueurZaku = unJoueurFaisantChoix(new Tira());
+    var joueurZaku2 = unJoueurFaisantChoix(new Gehiago(6));
+
+    var equipeEsku = new Equipe(joueurEsku, joueurEsku2);
+    var equipeZaku = new Equipe(joueurZaku, joueurZaku2);
 
     var resultat = manche.jouer(new Opposants(equipeEsku, equipeZaku));
 
