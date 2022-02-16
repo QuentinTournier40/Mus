@@ -14,6 +14,14 @@ public class Equipe {
     joueur1.setMonEquipe(this);
   }
 
+  public Equipe(Joueur joueur1, Joueur joueur2) {
+    this.listeDesJoueurs = new ArrayList<>();
+    this.listeDesJoueurs.add(joueur1);
+    this.listeDesJoueurs.add(joueur2);
+    joueur1.setMonEquipe(this);
+    joueur2.setMonEquipe(this);
+  }
+
   public List<Joueur> getListeDesJoueurs() {
     return this.listeDesJoueurs;
   }

@@ -12,8 +12,8 @@ public class JeuDeMus {
     System.out.print("Entrez votre nom: ");
     var nomJoueur = new Scanner(System.in).next();
     var joueurHumain = Joueur.humain(nomJoueur);
-    var equipe1 = new Equipe(joueurHumain);
-    var equipe2 = new Equipe(Joueur.ordinateur());
+    var equipe1 = new Equipe(joueurHumain, Joueur.ordinateur("Ordinateur allié"));
+    var equipe2 = new Equipe(Joueur.ordinateur("Ordinateur mechant 1"), Joueur.ordinateur("Ordinateur mechant 2"));
 
     var partie = new Partie(new AffichageEvenements(joueurHumain));
     var resultat = partie.jouer(new Opposants(equipe1, equipe2));

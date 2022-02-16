@@ -56,15 +56,21 @@ public abstract class Phase {
 
   public Participants participantsParmi(Opposants opposants) {
     List<Joueur> listeDeJoueur = new ArrayList<>();
-    for(Equipe equipe : opposants.dansLOrdre()){
-      for(Joueur joueur : equipe.getListeDesJoueurs()){
-        if(peutParticiper(joueur.main())){
-          listeDeJoueur.add(joueur);
-        }
+    Equipe equipeEsku = opposants.equipeEsku();
+    Equipe equipeZaku = opposants.equipeZaku();
+    for(int i = 0; i < opposants.equipeEsku().getListeDesJoueurs().size(); i++)
+    {
+      if(peutParticiper(equipeEsku.getListeDesJoueurs().get(i).main())){
+        listeDeJoueur.add(equipeEsku.getListeDesJoueurs().get(i));
       }
+      if(peutParticiper(equipeZaku.getListeDesJoueurs().get(i).main())){
+        listeDeJoueur.add(equipeZaku.getListeDesJoueurs().get(i));
+      }
+
     }
     return new Participants(listeDeJoueur);
   }
+
 
   protected boolean peutParticiper(Main main) {
     return true;
