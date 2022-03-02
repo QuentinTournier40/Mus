@@ -51,22 +51,6 @@ class MancheTest {
   }
 
   @Test
-  void test() {
-    var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(2));
-    var joueurEsku2 = unJoueurFaisantChoix(new Gehiago(2));
-    var joueurZaku = unJoueurFaisantChoix(new Tira());
-    var joueurZaku2 = unJoueurFaisantChoix(new Gehiago(6));
-
-    var equipeEsku = new Equipe(joueurEsku, joueurEsku2);
-    var equipeZaku = new Equipe(joueurZaku, joueurZaku2);
-
-    var resultat = manche.jouer(new Opposants(equipeEsku, equipeZaku));
-
-    assertThat(resultat.vainqueur()).isEqualTo(joueurEsku.getMonEquipe());
-    assertThat(resultat.pointsVaincu()).isZero();
-  }
-
-  @Test
   void devrait_changer_l_ordre_des_opposants_a_la_fin_du_tour() {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());

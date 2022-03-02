@@ -80,11 +80,11 @@ public class Dialogue {
         if(joueur.getMonEquipe() == monEquipe && joueur != joueurParlant)
         {
           joueursDevantParler = Collections.singletonList(joueur).iterator();
-          this.retirerJoueurParlant();
-          return this;
+          Deroulement nouveauDeroulement = this.retirerJoueurParlant();
+          return nouveauDeroulement;
         }
       }
-      return Deroulement.termine();
+      return this.termine();
     }
 
     public Joueur prochainJoueur() {
@@ -100,8 +100,8 @@ public class Dialogue {
       return prochainsChoixPossibles;
     }
 
-    public Deroulement basculerSurAdversaire(List<TypeChoix> prochainsChoixPossibles) {
-      joueursDevantParler = Collections.singletonList(participants.adversaireDe(joueurParlant)).iterator();
+    public Deroulement basculerSurAdversaire(List<TypeChoix> prochainsChoixPossibles, Choix choixFait) {
+      joueursDevantParler = Collections.singletonList(participants.adversaireDe(joueurParlant, choixFait)).iterator();
       this.prochainsChoixPossibles = prochainsChoixPossibles;
       return this;
     }

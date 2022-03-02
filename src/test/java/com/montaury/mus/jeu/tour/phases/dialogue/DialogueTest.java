@@ -42,6 +42,7 @@ class DialogueTest {
     assertThat(recapitulatif.pointsEngages()).isOne();
   }
 
+
   @Test
   void est_termine_si_le_dernier_choix_est_tira() {
     Joueur joueur1 = unJoueurFaisantChoix(new Paso(), new Tira());
