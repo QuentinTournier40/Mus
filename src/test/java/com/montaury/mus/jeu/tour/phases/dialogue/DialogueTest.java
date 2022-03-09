@@ -1,5 +1,6 @@
 package com.montaury.mus.jeu.tour.phases.dialogue;
 
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.evenements.Evenements;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.Participants;
@@ -45,30 +46,39 @@ class DialogueTest {
 
   @Test
   void est_termine_si_le_dernier_choix_est_tira() {
-    Joueur joueur1 = unJoueurFaisantChoix(new Paso(), new Tira());
-    Joueur joueur2 = unJoueurFaisantChoix(new Imido());
+    Joueur joueurEsku = unJoueurFaisantChoix(new Paso(), new Tira());
+    Joueur joueurZaku = unJoueurFaisantChoix(new Imido());
 
-    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2)));
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
+
+    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueurEsku, joueurZaku)));
 
     assertThat(recapitulatif.pointsEngages()).isOne();
   }
 
   @Test
   void est_termine_si_le_dernier_choix_est_idoki() {
-    Joueur joueur1 = unJoueurFaisantChoix(new Paso(), new Idoki());
-    Joueur joueur2 = unJoueurFaisantChoix(new Imido());
+    Joueur joueurEsku = unJoueurFaisantChoix(new Paso(), new Idoki());
+    Joueur joueurZaku = unJoueurFaisantChoix(new Imido());
 
-    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2)));
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
+
+    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueurEsku, joueurZaku)));
 
     assertThat(recapitulatif.pointsEngages()).isEqualTo(2);
   }
 
   @Test
   void est_termine_si_le_dernier_choix_est_kanta() {
-    Joueur joueur1 = unJoueurFaisantChoix(new Paso(), new Kanta());
-    Joueur joueur2 = unJoueurFaisantChoix(new Hordago());
+    Joueur joueurEsku = unJoueurFaisantChoix(new Paso(), new Kanta());
+    Joueur joueurZaku = unJoueurFaisantChoix(new Hordago());
 
-    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2)));
+    var equipeEsku = new Equipe(joueurEsku);
+    var equipeZaku = new Equipe(joueurZaku);
+
+    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueurEsku, joueurZaku)));
 
     assertThat(recapitulatif.pointsEngages()).isEqualTo(40);
   }

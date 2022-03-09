@@ -1,28 +1,47 @@
 package com.montaury.mus.jeu.tour.phases;
 
-import com.montaury.mus.jeu.Opposants;
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Gehiago;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.TypeChoix;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class  Participants {
-  private final List<Joueur> dansLOrdre;
+  private final List<Queue<Joueur>> listeParEquipes = new ArrayList<>();
+  private List<Joueur> listeJoueurs = new ArrayList<>();
 
-  public Participants(List<Joueur> dansLOrdre) {
-    this.dansLOrdre = dansLOrdre;
+  public Participants(List<Joueur> listeJoueurs) {
+    Queue<Joueur> equipe1 = new LinkedList<>();
+    Queue<Joueur> equipe2 = new LinkedList<>();
+    Equipe equipeCourante = null;
+    for(Joueur joueur : listeJoueurs){
+      if(equipeCourante == null){
+        equipeCourante = joueur.getMonEquipe();
+        equipe1.add(joueur);
+      }
+      else if(equipeCourante == joueur.getMonEquipe()){
+        equipe1.add(joueur);
+      }
+      else{
+        equipe2.add(joueur);
+      }
+    }
+    listeParEquipes.add(equipe1);
+    listeParEquipes.add(equipe2);
+    this.listeJoueurs = listeJoueurs;
   }
 
   public boolean aucun() {
-    return dansLOrdre.isEmpty();
+    return listeJoueurs.isEmpty();
   }
 
-  public boolean estUnique() {
-    return dansLOrdre.size() == 1;
+  public boolean equipeEstUnique() {
+    return listeParEquipes.size() == 1;
   }
+/*
 
   public boolean equipeEstUnique(){
     var uneEquipe = dansLOrdre.get(0).getMonEquipe();
@@ -33,74 +52,27 @@ public class  Participants {
     }
     return true;
   }
-
-  public Joueur premier() {
-    return dansLOrdre.get(0);
-  }
-
-  /*
-  public Joueur adversaireDe(Joueur joueurParlant, Choix choixFait) {
-    Joueur adversaire;
-    int indiceJoueurParlant = dansLOrdre.indexOf(joueurParlant);
-    if(choixFait.est(TypeChoix.GEHIAGO)){
-      if(indiceJoueurParlant + 1 == dansLOrdre.size()){
-        adversaire = dansLOrdre.get(0);
-      }else{
-        adversaire = dansLOrdre.get(indiceJoueurParlant + 1);
-      }
-    }else{
-      if(indiceJoueurParlant - 1 == -1){
-        adversaire = dansLOrdre.get(dansLOrdre.size() - 1);
-      }else{
-        adversaire = dansLOrdre.get(indiceJoueurParlant - 1);
-      }
-    }
-    return adversaire;
-  }
 */
+  public Joueur premier() {
+    return listeJoueurs.get(0);
+  }
 
-  public Joueur adversaireDe(Joueur joueurParlant, Choix choixFait) {
+  public Joueur adversaireDe(Joueur joueurParlant) {
     Joueur adversaire = null;
-    int indiceJoueurParlant = dansLOrdre.indexOf(joueurParlant);
-    switch(indiceJoueurParlant){
-      case 0:
-        if(joueurParlant.getMonEquipe() != dansLOrdre.get(1).getMonEquipe()){
-          adversaire = dansLOrdre.get(1);
-        }
-        else{
-          adversaire = dansLOrdre.get(2);
-        }
-        break;
-      case 1:
-        if(joueurParlant.getMonEquipe() != dansLOrdre.get(0).getMonEquipe()){
-          adversaire = dansLOrdre.get(0);
-        }
-        else{
-          adversaire = dansLOrdre.get(2);
-        }
-        break;
-      case 2:
-      case 3:
-        if(joueurParlant.getMonEquipe() != dansLOrdre.get(0).getMonEquipe()){
-          adversaire = dansLOrdre.get(0);
-        }
-        else{
-          adversaire = dansLOrdre.get(1);
-        }
-        break;
+    if(listeJoueurs.get(0).getMonEquipe() == joueurParlant.getMonEquipe())
+      adversaire = listeParEquipes.get(1).peek();
+    else{
+      adversaire = listeParEquipes.get(0).peek();
     }
     return adversaire;
   }
-
-
 
   public Iterable<Joueur> dansLOrdre() {
-    return dansLOrdre;
+    return listeJoueurs;
   }
 
   public Participants retirer(Joueur joueur) {
-    var joueurs = new ArrayList<>(dansLOrdre);
-    joueurs.remove(joueur);
-    return new Participants(joueurs);
+    listeJoueurs.remove(joueur);
+    return new Participants(listeJoueurs);
   }
 }
