@@ -21,7 +21,4 @@ public interface Evenements {
   void nouvellePhase(Phase phase);
 
   void partieTerminee(Partie.Resultat resultat);
-
-  //void nouveauTour(Opposants2v2 opposants);
-  //void tourTermine(Opposants2v2 opposants);
 }

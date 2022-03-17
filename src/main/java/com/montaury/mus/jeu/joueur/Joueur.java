@@ -10,7 +10,7 @@ public class Joueur {
     return new Joueur(nom, new InterfaceJoueurHumain());
   }
 
-  public static Joueur ordinateur(String nom) {
+  public static Joueur  ordinateur(String nom) {
     return new Joueur(nom, new InterfaceJoueurOrdinateur());
   }
 

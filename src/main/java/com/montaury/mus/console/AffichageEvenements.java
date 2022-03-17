@@ -6,6 +6,7 @@ import com.montaury.mus.jeu.Partie;
 import com.montaury.mus.jeu.evenements.Evenements;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.Phase;
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class AffichageEvenements implements Evenements {
   @Override
   public void mancheTerminee(Partie.Score score) {
     afficher("Manche terminée");
-    score.resultatManches().forEach(manche -> afficher("Vainqueur : " + manche.vainqueur().getListeDesJoueurs().get(0).nom() + ", score du perdant : " + manche.pointsVaincu()));
+    score.resultatManches().forEach(manche -> afficher("Vainqueur : " + manche.vainqueur().getNom() + ", score du perdant : " + manche.pointsVaincu()));
   }
 
   @Override
@@ -42,7 +43,7 @@ public class AffichageEvenements implements Evenements {
     afficher("Tour terminé");
     opposants.equipeEsku().getListeDesJoueurs().forEach(this::afficherMain);
     opposants.equipeZaku().getListeDesJoueurs().forEach(this::afficherMain);
-    score.scoreParEquipe().forEach((key, value) -> afficher("Score " + key.getListeDesJoueurs().get(0).nom() + " et " + key.getListeDesJoueurs().get(1).nom() + " " + value));
+    score.scoreParEquipe().forEach((key, value) -> afficher("Score : " + key.getNom() + " : " + value));
     sautLigne();
   }
 

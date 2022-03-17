@@ -2,7 +2,6 @@ package com.montaury.mus.jeu.tour.phases;
 
 import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.joueur.Joueur;
-import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.LinkedList;
 
 public class  Participants {
   private final List<Queue<Joueur>> listeParEquipes = new ArrayList<>();
-  private List<Joueur> listeJoueurs = new ArrayList<>();
+  private List<Joueur> listeJoueurs;
 
   public Participants(List<Joueur> listeJoueurs) {
     Queue<Joueur> equipe1 = new LinkedList<>();
@@ -29,9 +28,9 @@ public class  Participants {
         equipe2.add(joueur);
       }
     }
-    listeParEquipes.add(equipe1);
-    listeParEquipes.add(equipe2);
-    this.listeJoueurs = listeJoueurs;
+    this.listeParEquipes.add(equipe1);
+    this.listeParEquipes.add(equipe2);
+    this.listeJoueurs = new ArrayList<>(listeJoueurs);
   }
 
   public boolean aucun() {
@@ -39,20 +38,14 @@ public class  Participants {
   }
 
   public boolean equipeEstUnique() {
-    return listeParEquipes.size() == 1;
-  }
-/*
-
-  public boolean equipeEstUnique(){
-    var uneEquipe = dansLOrdre.get(0).getMonEquipe();
-    for(int i = 1; i < dansLOrdre.size(); i++){
-      if(dansLOrdre.get(i).getMonEquipe() != uneEquipe){
-        return false;
+    for(Queue<Joueur> maPile : listeParEquipes) {
+      if(maPile.size() == 0) {
+        return true;
       }
     }
-    return true;
+    return false;
   }
-*/
+
   public Joueur premier() {
     return listeJoueurs.get(0);
   }
@@ -75,4 +68,9 @@ public class  Participants {
     listeJoueurs.remove(joueur);
     return new Participants(listeJoueurs);
   }
+
+
 }
+
+
+

@@ -79,12 +79,11 @@ public class Dialogue {
       {
         if(joueur.getMonEquipe() == monEquipe && joueur != joueurParlant)
         {
-          joueursDevantParler = Collections.singletonList(joueur).iterator();
-          Deroulement nouveauDeroulement = this.retirerJoueurParlant();
-          return nouveauDeroulement;
+          this.joueursDevantParler = Collections.singletonList(joueur).iterator();
+          return this.retirerJoueurParlant();
         }
       }
-      return this.termine();
+      return termine();
     }
 
     public Joueur prochainJoueur() {

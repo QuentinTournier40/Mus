@@ -31,8 +31,8 @@ class MusTest {
     joueurEsku = new Joueur("J1", interfaceJoueurEsku);
     joueurZaku = new Joueur("J2", interfaceJoueurZaku);
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     opposants = new Opposants(equipeEsku, equipeZaku);
   }

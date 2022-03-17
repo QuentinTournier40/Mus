@@ -1,5 +1,6 @@
 package com.montaury.mus.jeu.tour.phases.dialogue;
 
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Hordago;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Idoki;
@@ -16,6 +17,9 @@ class RecapitulatifTest {
 
   private final Joueur joueur1 = unJoueur();
   private final Joueur joueur2 = unJoueur();
+
+  private final Equipe equipe11 = new Equipe(joueur1, "equipe1");
+  private final Equipe equipe12 = new Equipe(joueur1, "equipe2");
 
   @Test
   void devrait_compter_1_point_engage_si_tous_les_joueurs_sont_paso() {

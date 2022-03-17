@@ -26,20 +26,13 @@ public class Opposants {
     var tmp = equipeEsku;
     equipeEsku = equipeZaku;
     equipeZaku = tmp;
-
     for(int i = 0; i < equipeEsku().getListeDesJoueurs().size(); i++)
     {
       equipeEsku.getListeDesJoueurs().get(i).setMonEquipe(equipeEsku);
       equipeZaku.getListeDesJoueurs().get(i).setMonEquipe(equipeZaku);
     }
-
     Joueur joueurQuiDevientZaku = this.ordreDePassage.removeFirst();
     this.ordreDePassage.add(joueurQuiDevientZaku);
-
-    System.out.println("Ordre joueurs");
-    for(Joueur joueur : ordreDePassage){
-      System.out.println(joueur.nom());
-    }
   }
 
   public Equipe equipeEsku() {

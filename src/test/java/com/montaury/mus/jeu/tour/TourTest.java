@@ -36,8 +36,8 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
     var joueurZaku = unJoueurFaisantChoix(new Tira());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
     var score = new Manche.Score(opposants);
@@ -54,8 +54,8 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Paso(), new Paso(), new Paso(), new Paso());
     var joueurZaku = unJoueurFaisantChoix(new Paso());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
     var score = new Manche.Score(opposants);
@@ -72,8 +72,8 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
     var score = new Manche.Score(opposants);
@@ -90,8 +90,8 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
     var joueurZaku = unJoueurFaisantChoix(new Idoki());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
     var score = new Manche.Score(opposants);
@@ -108,8 +108,8 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Idoki(), new Imido(), new Idoki(), new Imido(), new Idoki(), new Imido(), new Idoki());
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(2));
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
     var score = new Manche.Score(opposants);
@@ -126,8 +126,8 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
     var joueurZaku = unJoueurFaisantChoix(new Idoki());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
     var score = new Manche.Score(opposants);
@@ -146,8 +146,8 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Paso(), new Paso());
     var joueurZaku = unJoueurFaisantChoix(new Paso(), new Paso());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
     var score = new Manche.Score(opposants);
@@ -159,6 +159,26 @@ class TourTest {
     assertThat(score.vainqueur()).isEmpty();
     assertThat(score.scoreParEquipe()).containsEntry(joueurEsku.getMonEquipe(), 6);
     assertThat(score.scoreParEquipe()).containsEntry(joueurZaku.getMonEquipe(), 0);
+  }
+
+  @Test
+  void devrait_donner_tous_les_points_a_l_equipe_esku_si_l_equipe_zaku_fait_tira() {
+    var joueur1 = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
+    var joueur2 = unJoueurFaisantChoix(new Tira());
+    var joueur3 = unJoueurFaisantChoix(new Imido());
+    var joueur4 = unJoueurFaisantChoix(new Tira());
+
+    var equipeEsku = new Equipe(joueur1, joueur3, "equipe1");
+    var equipeZaku = new Equipe(joueur2, joueur4, "equipe2");
+
+    var opposants = new Opposants(equipeEsku, equipeZaku);
+    var score = new Manche.Score(opposants);
+
+    tour.jouer(opposants, score);
+
+    assertThat(score.vainqueur()).isEmpty();
+    assertThat(score.scoreParEquipe()).containsEntry(equipeEsku, 8);
+    assertThat(score.scoreParEquipe()).containsEntry(equipeZaku, 0);
   }
 
   private Evenements evenementsDeJeu;

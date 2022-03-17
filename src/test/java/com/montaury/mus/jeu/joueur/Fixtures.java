@@ -1,10 +1,12 @@
 package com.montaury.mus.jeu.joueur;
 
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import java.util.Arrays;
 
 public class Fixtures {
+
   public static Joueur unJoueur() {
     return new Joueur("Ordinateur", new FausseInterfaceJoueur());
   }

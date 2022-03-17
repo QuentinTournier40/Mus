@@ -27,8 +27,8 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var resultat = manche.jouer(new Opposants(equipeEsku, equipeZaku));
 
@@ -41,8 +41,8 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Gehiago(2));
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(40), new Tira());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var resultat = manche.jouer(new Opposants(equipeEsku, equipeZaku));
 
@@ -55,8 +55,8 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    var equipeEsku = new Equipe(joueurEsku);
-    var equipeZaku = new Equipe(joueurZaku);
+    var equipeEsku = new Equipe(joueurEsku, "equipe1");
+    var equipeZaku = new Equipe(joueurZaku, "equipe2");
 
     var opposants = new Opposants(equipeEsku, equipeZaku);
 

@@ -3,6 +3,7 @@ package com.montaury.mus.jeu.joueur;
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Choix;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.TypeChoix;
+import com.montaury.mus.jeu.Equipe;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
